@@ -1,0 +1,14 @@
+{
+  "name": "bullshit-analysis-secure",
+  "version": "2.0.0",
+  "description": "Secure, bilingual, Apple-style multi-page site about bullshit analysis. No dependencies.",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "cert": "sh gen-cert.sh",
+    "test": "node test.js",
+    "admin": "node admin.js"
+  },
+  "license": "MIT"
+}

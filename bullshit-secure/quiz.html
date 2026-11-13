@@ -1,0 +1,32 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:quiz.title}}</h1>
+    <p class="lead">{{t:quiz.lead}}</p>
+  </header>
+
+  <section class="card reveal" id="quiz">
+    <div id="q-play">
+      <div class="quiz-top">
+        <span class="muted" id="q-count"></span>
+        <div class="meter"><span id="q-bar"></span></div>
+      </div>
+      <blockquote class="q-text" id="q-text"></blockquote>
+      <div class="q-actions" id="q-actions">
+        <button class="btn secondary big" type="button" data-a="b">{{t:quiz.bs}}</button>
+        <button class="btn secondary big" type="button" data-a="m">{{t:quiz.ok}}</button>
+      </div>
+      <div class="q-fb" id="q-fb" hidden aria-live="polite">
+        <h3 id="q-fb-t"></h3>
+        <p id="q-fb-p"></p>
+        <div><button class="btn primary" type="button" id="q-next">{{t:quiz.next}}</button></div>
+      </div>
+    </div>
+    <div class="q-res" id="q-res" hidden aria-live="polite">
+      <h2>{{t:quiz.done}}</h2>
+      <div class="big-score" id="q-score"></div>
+      <p id="q-msg"></p>
+      <p class="muted" id="q-best"></p>
+      <button class="btn primary" type="button" id="q-again">{{t:quiz.again}}</button>
+    </div>
+  </section>
+</div>

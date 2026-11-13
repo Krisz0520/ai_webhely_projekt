@@ -1,0 +1,48 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:ff.title}}</h1>
+    <p class="lead">{{t:ff.lead}}</p>
+  </header>
+
+  <section class="reveal">
+    <h2>{{t:ff.core.h}}</h2>
+    <p>{{h:ff.core.p}}</p>
+  </section>
+
+  <section class="reveal">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col"><span class="sr">{{t:ff.t.aspect}}</span></th><th scope="col">{{t:ff.t.liar}}</th><th scope="col">{{t:ff.t.bs}}</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">{{t:ff.r1}}</th><td>{{t:ff.r1.liar}}</td><td>{{t:ff.r1.bs}}</td></tr>
+          <tr><th scope="row">{{t:ff.r2}}</th><td>{{t:ff.r2.liar}}</td><td>{{t:ff.r2.bs}}</td></tr>
+          <tr><th scope="row">{{t:ff.r3}}</th><td>{{t:ff.r3.liar}}</td><td>{{t:ff.r3.bs}}</td></tr>
+          <tr><th scope="row">{{t:ff.r4}}</th><td>{{t:ff.r4.liar}}</td><td>{{t:ff.r4.bs}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card reveal" id="role-lab">
+    <h2>{{t:ff.lab.h}}</h2>
+    <p class="muted">{{t:ff.lab.p}}</p>
+    <div class="field-row">
+      <label for="care">{{t:ff.care}}</label>
+      <output id="care-out" for="care">60%</output>
+    </div>
+    <input type="range" id="care" min="0" max="100" value="60">
+    <div class="field-row">
+      <label for="truthful">{{t:ff.truthful}}</label>
+      <input class="switch" type="checkbox" id="truthful" checked>
+    </div>
+    <div class="role" id="role" data-k="honest" aria-live="polite">
+      <h3 id="role-t"></h3>
+      <p id="role-d"></p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>{{t:ff.why.h}}</h2>
+    <p>{{t:ff.why.p}}</p>
+  </section>
+</div>

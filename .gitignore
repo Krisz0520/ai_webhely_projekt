@@ -1,0 +1,14 @@
+# Titkosítási kulcs és felhasználói adatok: SOHA ne kerüljenek GitHubra
+data/
+certs/
+*.pem
+*.key
+*.enc
+.env
+*.env
+
+# Egyéb
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

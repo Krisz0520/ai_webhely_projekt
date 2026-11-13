@@ -1,0 +1,37 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:work.title}}</h1>
+    <p class="lead">{{t:work.lead}}</p>
+  </header>
+
+  <section class="card reveal">
+    <h2>{{t:work.bingo.h}}</h2>
+    <p class="muted">{{t:work.bingo.p}}</p>
+    <div class="bingo" id="bingo"></div>
+    <div class="row between">
+      <p id="bingo-count" class="muted" aria-live="polite"></p>
+      <button class="btn secondary" type="button" id="bingo-new">{{t:work.bingo.new}}</button>
+    </div>
+    <p id="bingo-win" class="msg ok" role="status"></p>
+  </section>
+
+  <section class="reveal">
+    <h2>{{t:work.why.h}}</h2>
+    <ul class="list">
+      <li>{{t:work.why.1}}</li>
+      <li>{{t:work.why.2}}</li>
+      <li>{{t:work.why.3}}</li>
+      <li>{{t:work.why.4}}</li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <p>{{h:work.graeber}}</p>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:work.fix.h}}</h2>
+    <p class="muted">{{t:work.fix.p}}</p>
+    <p class="tw" id="tw" data-type="{{t:work.q}}">{{t:work.q}}</p>
+  </section>
+</div>

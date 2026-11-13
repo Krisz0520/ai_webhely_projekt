@@ -1,0 +1,111 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:acc.title}}</h1>
+    <p class="lead">{{t:acc.lead}}</p>
+  </header>
+
+  <section class="card reveal">
+    <h2>{{t:acc.profile}}</h2>
+    <dl class="kv">
+      <dt>{{t:acc.user}}</dt><dd id="acc-user">–</dd>
+      <dt>{{t:acc.since}}</dt><dd id="acc-since">–</dd>
+      <dt>{{t:acc.last}}</dt><dd id="acc-last">–</dd>
+      <dt>{{t:acc.sessions}}</dt><dd id="acc-sessions">–</dd>
+    </dl>
+  </section>
+
+  <section class="card reveal" id="sec-2fa">
+    <div class="row between">
+      <h2>{{t:acc.2fa.h}}</h2>
+      <span class="tag" id="acc-2fa-state">{{t:acc.2fa.off}}</span>
+    </div>
+    <p class="muted">{{t:acc.2fa.p}}</p>
+
+    <div class="stack" id="tf-off">
+      <div><button class="btn primary" type="button" id="tf-start">{{t:acc.2fa.start}}</button></div>
+      <form class="stack" id="tf-enable-form" hidden autocomplete="off">
+        <div class="field"><span class="label">{{t:acc.2fa.secret}}</span><code class="secret" id="tf-secret"></code></div>
+        <div class="field"><span class="label">{{t:acc.2fa.uri}}</span><code class="secret uri" id="tf-uri"></code></div>
+        <div class="field">
+          <label for="tf-code">{{t:acc.code}}</label>
+          <input type="text" id="tf-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div><button class="btn primary" type="submit">{{t:acc.2fa.enable}}</button></div>
+      </form>
+    </div>
+
+    <form class="stack" id="tf-disable-form" hidden autocomplete="off">
+      <div class="field">
+        <label for="tf-dpw">{{t:acc.pw.cur}}</label>
+        <input type="password" id="tf-dpw" autocomplete="current-password" required>
+      </div>
+      <div class="field">
+        <label for="tf-dcode">{{t:acc.code}}</label>
+        <input type="text" id="tf-dcode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>
+      </div>
+      <div><button class="btn danger" type="submit">{{t:acc.2fa.disable}}</button></div>
+    </form>
+    <p class="msg" id="tf-msg" role="status"></p>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:acc.pw.h}}</h2>
+    <form class="stack" id="pw-form" autocomplete="off">
+      <div class="field">
+        <label for="pw-cur">{{t:acc.pw.cur}}</label>
+        <input type="password" id="pw-cur" autocomplete="current-password" required>
+      </div>
+      <div class="field">
+        <label for="pw-new">{{t:acc.pw.new}}</label>
+        <input type="password" id="pw-new" autocomplete="new-password" minlength="10" maxlength="128" required>
+        <span class="hint">{{t:login.hint.pw}}</span>
+      </div>
+      <div class="field" id="pw-code-field" hidden>
+        <label for="pw-code">{{t:acc.code}}</label>
+        <input type="text" id="pw-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}">
+      </div>
+      <div><button class="btn primary" type="submit">{{t:acc.pw.save}}</button></div>
+      <p class="msg" id="pw-msg" role="status"></p>
+    </form>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:acc.out.h}}</h2>
+    <p class="muted">{{t:acc.out.p}}</p>
+    <div class="row" id="out-row"><button class="btn secondary" type="button" id="out-all">{{t:acc.out.all}}</button></div>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:acc.log.h}}</h2>
+    <p class="muted">{{t:acc.log.p}}</p>
+    <ul class="log" id="acc-log"></ul>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:acc.prot.h}}</h2>
+    <ul class="shield">
+      <li>{{t:acc.prot.1}}</li>
+      <li>{{t:acc.prot.2}}</li>
+      <li>{{t:acc.prot.3}}</li>
+      <li>{{t:acc.prot.4}}</li>
+      <li>{{t:acc.prot.5}}</li>
+    </ul>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:acc.del.h}}</h2>
+    <p class="muted">{{t:acc.del.p}}</p>
+    <form class="stack" id="del-form" autocomplete="off">
+      <div class="field">
+        <label for="del-pw">{{t:acc.pw.cur}}</label>
+        <input type="password" id="del-pw" autocomplete="current-password" required>
+      </div>
+      <div class="field" id="del-code-field" hidden>
+        <label for="del-code">{{t:acc.code}}</label>
+        <input type="text" id="del-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}">
+      </div>
+      <div><button class="btn danger" type="submit">{{t:acc.del.btn}}</button></div>
+      <p class="msg" id="del-msg" role="status"></p>
+    </form>
+  </section>
+</div>

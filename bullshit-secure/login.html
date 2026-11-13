@@ -1,0 +1,69 @@
+<div class="orb o1" aria-hidden="true"></div>
+<div class="orb o2" aria-hidden="true"></div>
+<section class="auth-card">
+  <div class="auth-head">
+    <div class="lock"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lock"/></svg></div>
+    <h1>{{t:login.title}}</h1>
+    <p>{{t:login.sub}}</p>
+  </div>
+  <noscript><p class="msg err">{{t:login.nojs}}</p></noscript>
+
+  <div class="seg" role="tablist" id="tabs">
+    <button type="button" role="tab" id="tab-in" aria-selected="true" aria-controls="panel-in">{{t:login.tab.in}}</button>
+    <button type="button" role="tab" id="tab-up" aria-selected="false" aria-controls="panel-up">{{t:login.tab.up}}</button>
+  </div>
+
+  <div id="panel-in" role="tabpanel" aria-labelledby="tab-in">
+    <form class="stack step" id="form-login" autocomplete="on">
+      <div class="field">
+        <label for="li-user">{{t:login.user}}</label>
+        <input type="text" id="li-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" required>
+      </div>
+      <div class="field">
+        <label for="li-pw">{{t:login.pw}}</label>
+        <div class="pw-wrap">
+          <input type="password" id="li-pw" name="password" autocomplete="current-password" maxlength="128" required>
+          <button class="pw-toggle" type="button" data-for="li-pw" aria-pressed="false">{{t:login.show}}</button>
+        </div>
+      </div>
+      <button class="btn primary block" type="submit" id="li-btn">{{t:login.btn.in}}</button>
+    </form>
+
+    <form class="stack step" id="form-2fa" hidden autocomplete="off">
+      <p class="muted">{{t:login.code.p}}</p>
+      <div class="field">
+        <label for="tf-code">{{t:login.code}}</label>
+        <input type="text" id="tf-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>
+      </div>
+      <button class="btn primary block" type="submit">{{t:login.verify}}</button>
+      <button class="btn link" type="button" id="tf-back">{{t:login.back}}</button>
+    </form>
+  </div>
+
+  <div id="panel-up" role="tabpanel" aria-labelledby="tab-up" hidden>
+    <form class="stack" id="form-register" autocomplete="on">
+      <div class="field">
+        <label for="re-user">{{t:login.user}}</label>
+        <input type="text" id="re-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" required>
+        <span class="hint">{{t:login.user.hint}}</span>
+      </div>
+      <div class="field">
+        <label for="re-pw">{{t:login.pw}}</label>
+        <div class="pw-wrap">
+          <input type="password" id="re-pw" name="new-password" autocomplete="new-password" minlength="10" maxlength="128" required>
+          <button class="pw-toggle" type="button" data-for="re-pw" aria-pressed="false">{{t:login.show}}</button>
+        </div>
+        <div class="strength" id="strength" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <span class="hint" id="strength-label" aria-live="polite">{{t:login.hint.pw}}</span>
+      </div>
+      <div class="field">
+        <label for="re-pw2">{{t:login.pw2}}</label>
+        <input type="password" id="re-pw2" autocomplete="new-password" maxlength="128" required>
+      </div>
+      <button class="btn primary block" type="submit" id="re-btn">{{t:login.btn.up}}</button>
+    </form>
+  </div>
+
+  <p class="msg" id="auth-msg" role="alert"></p>
+  <p class="auth-note">{{t:login.sec}}</p>
+</section>

@@ -1,0 +1,47 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:def.title}}</h1>
+    <p class="lead">{{t:def.lead}}</p>
+  </header>
+
+  <section class="card reveal">
+    <div class="def-top">
+      <div class="ring-wrap">
+        <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="def-ring" cx="60" cy="60" r="52"/></svg>
+        <span class="ring-pct" id="def-pct">0%</span>
+      </div>
+      <div>
+        <h2>{{t:def.list.h}}</h2>
+        <p class="muted">{{t:def.list.p}}</p>
+      </div>
+    </div>
+    <div id="checks">
+      <label class="check"><input type="checkbox"><span>{{t:def.s1}}</span></label>
+      <label class="check"><input type="checkbox"><span>{{t:def.s2}}</span></label>
+      <label class="check"><input type="checkbox"><span>{{t:def.s3}}</span></label>
+      <label class="check"><input type="checkbox"><span>{{t:def.s4}}</span></label>
+      <label class="check"><input type="checkbox"><span>{{t:def.s5}}</span></label>
+      <label class="check"><input type="checkbox"><span>{{t:def.s6}}</span></label>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>{{t:def.bl.h}}</h2>
+    <p class="muted">{{t:def.bl.p}}</p>
+    <div class="field-row">
+      <label for="bl">{{t:def.bl.claim}}</label>
+      <output id="bl-out" for="bl">12</output>
+    </div>
+    <input type="range" id="bl" min="3" max="60" value="12">
+    <div class="bl-bars">
+      <div><div class="lbl"><span>{{t:def.bl.a}}</span></div><div class="meter"><span id="bl-a"></span></div></div>
+      <div><div class="lbl"><span>{{t:def.bl.b}}</span></div><div class="meter b"><span id="bl-b"></span></div></div>
+    </div>
+    <p id="bl-text" aria-live="polite"></p>
+  </section>
+
+  <section class="reveal">
+    <h2>{{t:def.sum.h}}</h2>
+    <p>{{h:def.sum.p}}</p>
+  </section>
+</div>

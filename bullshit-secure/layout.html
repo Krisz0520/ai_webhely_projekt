@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{@lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="referrer" content="no-referrer">
+<meta name="csrf-token" content="{{@csrf}}">
+<meta name="user" content="{{@user}}">
+<title>{{@title}} – {{t:app.name}}</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="{{@bodyclass}}">
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+</svg>
+<a class="skip" href="#main">{{t:skip}}</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">{{t:app.name}}</a>
+    <nav id="nav" aria-label="{{t:nav.main}}">{{@nav}}</nav>
+    <div class="tools">
+      <button class="icon-btn txt" id="lang-btn" type="button" aria-label="{{t:lang.aria}}" title="{{t:lang.aria}}">{{t:lang.to}}</button>
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="{{t:theme.auto}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-auto"/></svg></button>
+      {{@account}}
+    </div>
+    <button class="icon-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="{{t:menu}}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+{{@content}}
+</main>
+<footer class="foot"><p>{{t:footer}}</p></footer>
+<script id="dict" type="application/json">{{@dict}}</script>
+<script src="/app.js" defer></script>
+{{@extra}}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div class="wrap narrow">
+  <header class="page-head">
+    <h1>{{t:det.title}}</h1>
+    <p class="lead">{{t:det.lead}}</p>
+  </header>
+
+  <section class="card reveal">
+    <div class="field">
+      <label for="det-in">{{t:det.in}}</label>
+      <textarea id="det-in" maxlength="4000" placeholder="{{t:det.ph}}"></textarea>
+    </div>
+    <div class="row">
+      <button class="btn secondary" id="det-sample" type="button">{{t:det.sample}}</button>
+      <button class="btn link" id="det-clear" type="button">{{t:det.clear}}</button>
+    </div>
+
+    <div class="det-result" aria-live="polite">
+      <div class="det-score">
+        <span class="label">{{t:det.score}}</span>
+        <strong id="det-num">0</strong>
+      </div>
+      <div class="meter" id="det-meter" data-l="0"><span></span></div>
+      <p id="det-label" class="muted">{{t:det.empty}}</p>
+      <div class="det-stats">
+        <span id="det-words"></span><span id="det-buzz"></span><span id="det-fig"></span>
+      </div>
+      <div class="tags" id="det-hits"></div>
+      <p class="muted" id="det-hint">{{t:det.hint}}</p>
+    </div>
+  </section>
+</div>

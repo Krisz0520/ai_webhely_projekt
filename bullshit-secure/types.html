@@ -1,0 +1,40 @@
+<div class="wrap">
+  <header class="page-head">
+    <h1>{{t:ty.title}}</h1>
+    <p class="lead">{{t:ty.lead}}</p>
+  </header>
+
+  <div class="chips" role="group" aria-label="{{t:ty.filter}}">
+    <button class="chip" type="button" data-f="all" aria-pressed="true">{{t:ty.f.all}}</button>
+    <button class="chip" type="button" data-f="easy" aria-pressed="false">{{t:ty.f.easy}}</button>
+    <button class="chip" type="button" data-f="medium" aria-pressed="false">{{t:ty.f.medium}}</button>
+    <button class="chip" type="button" data-f="hard" aria-pressed="false">{{t:ty.f.hard}}</button>
+  </div>
+
+  <section class="grid">
+    <article class="card type-card reveal" data-level="medium">
+      <h3>{{t:ty.pseudo.t}}</h3>
+      <p>{{t:ty.pseudo.d}}</p>
+      <div><div class="label">{{t:ty.diff}}</div><div class="meter" data-l="1"><span data-w="60"></span></div></div>
+      <details><summary>{{t:ty.example}}</summary><p class="example">{{t:ty.pseudo.ex}}</p></details>
+    </article>
+    <article class="card type-card reveal" data-level="hard">
+      <h3>{{t:ty.corp.t}}</h3>
+      <p>{{t:ty.corp.d}}</p>
+      <div><div class="label">{{t:ty.diff}}</div><div class="meter" data-l="3"><span data-w="85"></span></div></div>
+      <details><summary>{{t:ty.example}}</summary><p class="example">{{t:ty.corp.ex}}</p></details>
+    </article>
+    <article class="card type-card reveal" data-level="medium">
+      <h3>{{t:ty.pol.t}}</h3>
+      <p>{{t:ty.pol.d}}</p>
+      <div><div class="label">{{t:ty.diff}}</div><div class="meter" data-l="1"><span data-w="60"></span></div></div>
+      <details><summary>{{t:ty.example}}</summary><p class="example">{{t:ty.pol.ex}}</p></details>
+    </article>
+    <article class="card type-card reveal" data-level="easy">
+      <h3>{{t:ty.day.t}}</h3>
+      <p>{{t:ty.day.d}}</p>
+      <div><div class="label">{{t:ty.diff}}</div><div class="meter" data-l="0"><span data-w="35"></span></div></div>
+      <details><summary>{{t:ty.example}}</summary><p class="example">{{t:ty.day.ex}}</p></details>
+    </article>
+  </section>
+</div>

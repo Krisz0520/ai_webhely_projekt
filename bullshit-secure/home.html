@@ -1,0 +1,48 @@
+<section class="hero">
+  <div class="orb o1" aria-hidden="true"></div>
+  <div class="orb o2" aria-hidden="true"></div>
+  <h1 class="hero-title">{{t:home.title}}</h1>
+  <p class="hero-sub">{{t:home.sub}}</p>
+  <div class="hero-actions">
+    <a class="btn primary" href="/frankfurt">{{t:home.cta1}}</a>
+    <a class="btn link" href="/quiz">{{t:home.cta2}}</a>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="card reveal" id="gen">
+    <h2>{{t:gen.title}}</h2>
+    <p class="muted">{{t:gen.sub}}</p>
+    <p class="gen-out" id="gen-out" aria-live="polite">{{t:gen.placeholder}}</p>
+    <div class="row">
+      <button class="btn primary" id="gen-btn" type="button">{{t:gen.btn}}</button>
+      <button class="btn secondary" id="gen-copy" type="button">{{t:gen.copy}}</button>
+    </div>
+  </section>
+
+  <section class="card reveal" id="progress">
+    <h2>{{t:prog.title}}</h2>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num" id="p-quiz">–</span>
+        <span class="muted">{{t:prog.quiz}}</span>
+      </div>
+      <div class="stat">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="p-ring" cx="60" cy="60" r="52"/></svg>
+          <span class="ring-pct" id="p-def">0%</span>
+        </div>
+        <span class="muted">{{t:prog.def}}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <a class="card feat reveal" href="/frankfurt"><h3>{{t:feat.frankfurt.t}}</h3><p>{{t:feat.frankfurt.d}}</p><span class="open">{{t:more}}</span></a>
+    <a class="card feat reveal" href="/types"><h3>{{t:feat.types.t}}</h3><p>{{t:feat.types.d}}</p><span class="open">{{t:more}}</span></a>
+    <a class="card feat reveal" href="/detector"><h3>{{t:feat.detector.t}}</h3><p>{{t:feat.detector.d}}</p><span class="open">{{t:more}}</span></a>
+    <a class="card feat reveal" href="/quiz"><h3>{{t:feat.quiz.t}}</h3><p>{{t:feat.quiz.d}}</p><span class="open">{{t:more}}</span></a>
+    <a class="card feat reveal" href="/workplace"><h3>{{t:feat.workplace.t}}</h3><p>{{t:feat.workplace.d}}</p><span class="open">{{t:more}}</span></a>
+    <a class="card feat reveal" href="/defense"><h3>{{t:feat.defense.t}}</h3><p>{{t:feat.defense.d}}</p><span class="open">{{t:more}}</span></a>
+  </section>
+</div>
