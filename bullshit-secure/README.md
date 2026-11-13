@@ -30,6 +30,49 @@ npm start        # innentől https://localhost:8443
 
 A böngésző egyszer figyelmeztet az önaláírt tanúsítványra, ez helyi használatnál várt. Nyilvános üzemhez használj valódi tanúsítványt: másold a `key.pem` és `cert.pem` fájlokat a `certs/` mappába, vagy tedd a szervert TLS-t kezelő fordított proxy (például Caddy vagy nginx) mögé.
 
+## Ubuntu szerveren (telepítés egy paranccsal)
+
+Ubuntu vagy Debian szerveren a `deploy/install.sh` mindent beállít: Node.js 24 LTS, külön rendszerfelhasználó, automatikusan induló és újraindító szolgáltatás (szigorított systemd beállításokkal), a titkosítási jelmondat generálása és HTTPS.
+
+**1. Másold fel és csomagold ki a szerveren:**
+
+```bash
+scp bullshit-secure.zip felhasznalo@szerver:~
+ssh felhasznalo@szerver
+sudo apt install -y unzip && unzip bullshit-secure.zip && cd bullshit-secure
+```
+
+**2. Telepítés, a két lehetőség közül az egyik:**
+
+```bash
+sudo sh deploy/install.sh pelda.hu    # saját tartománnyal: valódi HTTPS (Caddy + Let's Encrypt)
+sudo sh deploy/install.sh             # tartomány nélkül: önaláírt HTTPS, https://SZERVER-IP:8443
+```
+
+Tartományhoz a tartomány A rekordjának a szerver IP-címére kell mutatnia, és a 80 és 443 portnak elérhetőnek kell lennie kívülről (felhő-szolgáltatónál a biztonsági csoportban is). A szkript végén kiírja az oldal címét.
+
+**Kezelés:**
+
+```bash
+sudo systemctl status bullshit       # állapot
+sudo journalctl -u bullshit -f       # napló
+sudo bullshit-admin list             # felhasználók
+sudo bullshit-admin create <név>     # új felhasználó (ideiglenes jelszót ír ki)
+sudo bullshit-admin reset-password <név>
+```
+
+**Frissítés:** másold fel az új verziót, és futtasd újra ugyanazt a telepítőparancsot. A felhasználók és a titkosítási kulcs megmaradnak.
+
+**Nyilvános szerveren** érdemes letiltani az önregisztrációt, és a felhasználókat a `bullshit-admin create` paranccsal létrehozni:
+
+```bash
+echo ALLOW_REGISTRATION=false | sudo tee -a /etc/bullshit.env && sudo systemctl restart bullshit
+```
+
+**Mit hova tesz:** program: `/opt/bullshit`, adatok: `/var/lib/bullshit`, beállítások és a titkosítási jelmondat: `/etc/bullshit.env` (csak root olvashatja). **Ezt a kettőt mentsd rendszeresen**, nélkülük az adatok nem olvashatók vissza.
+
+Az IP-címes (tartomány nélküli) mód önaláírt tanúsítványt használ, ezért a böngésző egyszer figyelmeztet. Ha a szerver IP-címe változik, töröld a `/var/lib/bullshit/certs` mappát, és futtasd újra a telepítőt.
+
 ## Oldalak
 
 | Útvonal | Tartalom | Interaktív elem |
@@ -92,6 +135,7 @@ APP_SECRET='hosszú-egyedi-jelmondat' ALLOW_REGISTRATION=false npm start
 
 ```bash
 node admin.js list                    # felhasználók listája
+node admin.js create <név>            # új felhasználó (ideiglenes jelszót ír ki)
 node admin.js reset-password <név>    # ideiglenes jelszó (elfelejtett jelszóhoz)
 node admin.js disable-2fa <név>       # 2FA kikapcsolása (elveszett telefonhoz)
 node admin.js delete <név>            # felhasználó törlése
@@ -103,6 +147,7 @@ node admin.js delete <név>            # felhasználó törlése
 - `auth.js`: jelszókezelés, munkamenetek, korlátozók
 - `store.js`: titkosított adattár
 - `totp.js`: kétlépcsős azonosítás
+- `deploy/install.sh`: Ubuntu/Debian szerver-telepítő
 - `start.bat`, `start.command`: dupla kattintásos indítók
 - `admin.js`, `gen-cert.sh`, `test.js`: kezelő eszközök és tesztek
 - `layout.html`, `*.html`: oldalsablonok

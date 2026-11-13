@@ -3,6 +3,7 @@
  * Small admin tool. STOP THE SERVER BEFORE USING IT (it edits the same encrypted file).
  *
  *   node admin.js list
+ *   node admin.js create <user>             (creates an account, prints a one-time temporary password)
  *   node admin.js delete <user>
  *   node admin.js disable-2fa <user>
  *   node admin.js reset-password <user>     (prints a one-time temporary password)
@@ -26,6 +27,16 @@ const auth = require('./auth');
       }
       console.log(`${store.count()} user(s)`);
       break;
+    case 'create': {
+      const n = String(name || '').trim().toLowerCase();
+      if (!/^[a-z0-9][a-z0-9_.-]{2,31}$/.test(n)) { console.error('Invalid username (3-32 chars: a-z, 0-9, dot, hyphen, underscore).'); process.exit(1); }
+      if (store.has(n)) { console.error('That user already exists.'); process.exit(1); }
+      const tmp = crypto.randomBytes(12).toString('base64url');
+      store.put({ name: n, hash: await auth.hashPassword(tmp), created: Date.now(), lastLogin: null, twofa: null, progress: { quizBest: 0, checklist: [] }, events: [] });
+      store.save(true);
+      console.log(`Created ${n}. Temporary password: ${tmp}\nAsk the user to change it right after signing in.`);
+      break;
+    }
     case 'delete': {
       const u = need(); store.remove(u.name); store.save(true); console.log(`Deleted ${u.name}.`); break;
     }
@@ -41,7 +52,7 @@ const auth = require('./auth');
       break;
     }
     default:
-      console.log('Usage: node admin.js list | delete <user> | disable-2fa <user> | reset-password <user>');
+      console.log('Usage: node admin.js list | create <user> | delete <user> | disable-2fa <user> | reset-password <user>');
   }
   process.exit(0);
 })();

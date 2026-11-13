@@ -1,0 +1,9 @@
+# Egységes sorvégek: a Linuxos szkriptek LF-et, a Windowsos indító CRLF-et igényelnek
+*.sh text eol=lf
+*.command text eol=lf
+*.bat text eol=crlf
+*.js text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.md text eol=lf
