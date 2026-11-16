@@ -85,7 +85,7 @@ Az IP-címes (tartomány nélküli) mód önaláírt tanúsítványt használ, e
 | `/quiz` | Kvíz (8 kérdés) | Pontszám, legjobb eredmény mentése |
 | `/workplace` | Céges bullshit | Bullshit-bingó, gépelő animáció |
 | `/defense` | Védekezés | Mentett ellenőrzőlista, Brandolini-szemléltetés |
-| `/account` | Fiók és biztonság | 2FA, jelszócsere, munkamenetek, napló, fióktörlés |
+| `/account` | Fiók és biztonság | 2FA beállítás QR-kóddal, jelszócsere, munkamenetek, napló, fióktörlés |
 
 A felső sávban váltható a nyelv (HU/EN) és a téma (automatikus, világos, sötét). Alapértelmezetten a böngésző nyelve és a rendszer témája érvényesül.
 
@@ -97,7 +97,7 @@ A felső sávban váltható a nyelv (HU/EN) és a téma (automatikus, világos, 
 | Jelszó-szabályok | Legalább 10 karakter, tiltott gyakori jelszavak és a felhasználónévvel egyező jelszó. |
 | Adattárolás | A teljes felhasználói adatbázis **AES-256-GCM** titkosítású (`data/users.enc`). Módosítás esetén a szerver nem indul el. A fájl 0600 jogosultságú, az írás atomi. |
 | Kulcs | Véletlen 32 bájtos kulcs (`data/secret.key`), vagy az `APP_SECRET` környezeti változóból scrypt-tel képzett kulcs. |
-| Kétlépcsős azonosítás | TOTP (RFC 6238), bármely hitelesítő alkalmazással. Egy kód nem használható fel kétszer. |
+| Kétlépcsős azonosítás | TOTP (RFC 6238), bármely hitelesítő alkalmazással. A beállításhoz QR-kódot kell beolvasni (kézi kulcsbevitel is lehetséges). A QR-kód a böngészőben készül, a titkos kulcs nem megy külső szolgáltatóhoz. Egy kód nem használható fel kétszer. |
 | Munkamenetek | 256 bites véletlen azonosító; a szerver csak a SHA-256 lenyomatát tartja. `HttpOnly`, `SameSite=Strict`, HTTPS-en `Secure` és `__Host-` előtagú süti. 30 perc inaktivitás vagy 8 óra után lejár. Belépéskor új azonosítót kap (session fixation ellen). |
 | CSRF | Egyedi token minden módosító kérésen, plusz `Origin` és `Sec-Fetch-Site` ellenőrzés. |
 | Brute force ellen | Korlátozás IP-re, IP+felhasználóra és felhasználóra; külön a 2FA-ra, a regisztrációra és az újrahitelesítésre. A nem létező felhasználónál is ugyanannyi ideig tart a válasz. |
@@ -106,7 +106,7 @@ A felső sávban váltható a nyelv (HU/EN) és a téma (automatikus, világos, 
 | Érzékeny műveletek | Jelszócsere, 2FA kikapcsolása és fióktörlés újra kéri a jelszót (és 2FA mellett a kódot). Jelszócsere után a többi eszközről kijelentkeztet. |
 | Napló | Az utolsó 10 biztonsági esemény megtekinthető a Fiók oldalon. |
 
-A `npm test` 97 ellenőrzést futtat: hitelesítés, CSRF, korlátozás, 2FA (köztük az RFC 6238 tesztvektora), titkosítás, a módosítás észlelése, HTTPS-süti, fordítások azonosságát.
+A `npm test` 107 ellenőrzést futtat: hitelesítés, CSRF, korlátozás, 2FA (köztük az RFC 6238 tesztvektora), a QR-kód generátor (Reed–Solomon-vektor és valódi beolvasás), titkosítás, a módosítás észlelése, HTTPS-süti, fordítások azonosságát.
 
 ## Beállítások (környezeti változók)
 
@@ -147,6 +147,7 @@ node admin.js delete <név>            # felhasználó törlése
 - `auth.js`: jelszókezelés, munkamenetek, korlátozók
 - `store.js`: titkosított adattár
 - `totp.js`: kétlépcsős azonosítás
+- `qr.js`: saját, függőségmentes QR-kód generátor (a 2FA beállításhoz)
 - `deploy/install.sh`: Ubuntu/Debian szerver-telepítő
 - `start.bat`, `start.command`: dupla kattintásos indítók
 - `admin.js`, `gen-cert.sh`, `test.js`: kezelő eszközök és tesztek

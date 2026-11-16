@@ -50,6 +50,21 @@
 
   const fmtDate = (ts) => ts ? new Intl.DateTimeFormat(lang === 'hu' ? 'hu-HU' : 'en-GB', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(ts)) : '–';
 
+  /* QR code as inline SVG. Built with DOM calls only, so it works under the strict CSP. */
+  function drawQr(box, text, label) {
+    box.replaceChildren();
+    box.hidden = true;
+    try {
+      const qr = window.QR.encode(text);
+      const border = 4, n = qr.size + border * 2, NS = 'http://www.w3.org/2000/svg';
+      const el = (name, attrs) => { const e = document.createElementNS(NS, name); for (const k of Object.keys(attrs)) e.setAttribute(k, attrs[k]); return e; };
+      const svg = el('svg', { viewBox: `0 0 ${n} ${n}`, role: 'img', 'aria-label': label, 'shape-rendering': 'crispEdges' });
+      svg.append(el('rect', { width: n, height: n, fill: '#fff' }), el('path', { d: window.QR.pathData(qr, border), fill: '#000' }));
+      box.append(svg);
+      box.hidden = false;
+    } catch (e) { /* the secret key shown below still allows manual setup */ }
+  }
+
   const RING = 2 * Math.PI * 52;
   function setRing(el, pct) {
     if (!el) return;
@@ -417,7 +432,7 @@
       const r = await api('POST', '/api/2fa/setup');
       if (!r.ok) return setMsg('tf-msg', errText(r), false);
       $('#tf-secret').textContent = r.data.secret.match(/.{1,4}/g).join(' ');
-      $('#tf-uri').textContent = r.data.uri;
+      drawQr($('#tf-qr'), r.data.uri, t('acc.2fa.qr.alt'));
       $('#tf-enable-form').hidden = false;
       $('#tf-start').hidden = true;
       $('#tf-code').focus();
@@ -429,6 +444,8 @@
       $('#tf-enable-form').hidden = true;
       $('#tf-start').hidden = false;
       $('#tf-code').value = '';
+      $('#tf-qr').replaceChildren();   // do not keep the secret in the page after setup
+      $('#tf-secret').textContent = '';
       setMsg('tf-msg', t('acc.2fa.enabled'), true);
       refresh();
     });

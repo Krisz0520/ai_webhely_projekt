@@ -1,3 +1,4 @@
+<script src="/qr.js" defer></script>
 <div class="wrap narrow">
   <header class="page-head">
     <h1>{{t:acc.title}}</h1>
@@ -24,8 +25,9 @@
     <div class="stack" id="tf-off">
       <div><button class="btn primary" type="button" id="tf-start">{{t:acc.2fa.start}}</button></div>
       <form class="stack" id="tf-enable-form" hidden autocomplete="off">
+        <p>{{t:acc.2fa.scan}}</p>
+        <div class="qr-wrap" id="tf-qr" hidden></div>
         <div class="field"><span class="label">{{t:acc.2fa.secret}}</span><code class="secret" id="tf-secret"></code></div>
-        <div class="field"><span class="label">{{t:acc.2fa.uri}}</span><code class="secret uri" id="tf-uri"></code></div>
         <div class="field">
           <label for="tf-code">{{t:acc.code}}</label>
           <input type="text" id="tf-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required>

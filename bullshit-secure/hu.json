@@ -28,7 +28,6 @@
   "title.defense": "Védekezés",
   "title.account": "Fiók és biztonság",
   "title.login": "Belépés",
-
   "home.title": "Mi az a bullshit, és miért fontos felismerni?",
   "home.sub": "Interaktív útmutató a süket dumához: elmélet, felismerés és védekezés. A haladásod a saját fiókodban marad.",
   "home.cta1": "Kezdd az elmélettel",
@@ -60,7 +59,6 @@
   "feat.workplace.d": "Bullshit-bingó a következő megbeszélésre.",
   "feat.defense.t": "Védekezés",
   "feat.defense.d": "Ellenőrzőlista és a Brandolini-törvény szemléltetése.",
-
   "ff.title": "Frankfurt elmélete",
   "ff.lead": "Harry G. Frankfurt amerikai filozófus 1986-os esszéje (könyvként 2005-ben jelent meg) tette a témát komoly elemzés tárgyává.",
   "ff.core.h": "A központi gondolat",
@@ -92,7 +90,6 @@
   "ff.role.bs.d": "Alig törődik azzal, igaz-e, amit mond. Hogy véletlenül igaz lesz-e, az mellékes, a benyomás számít. Ezért itt a másik kapcsoló nem is számít.",
   "ff.why.h": "Miért veszélyesebb?",
   "ff.why.p": "A hazug még az igazság szabályai szerint játszik. A bullshitelő kilép a játékból, ezért ha elszaporodik, elvész a mérce, amelyhez a kijelentéseket mérni lehetne. Frankfurt szerint a bullshit nagyobb ellensége az igazságnak, mint a hazugság.",
-
   "ty.title": "A bullshit fajtái",
   "ty.lead": "A süket duma többféle formában jelenik meg. A skála azt mutatja, mennyire nehéz felismerni.",
   "ty.filter": "Szűrés nehézség szerint",
@@ -114,7 +111,6 @@
   "ty.day.t": "Hétköznapi, pótló bullshit",
   "ty.day.d": "Amikor valaki olyan témában mond véleményt, amihez nem ért, mert úgy érzi, hozzá kell szólnia. Frankfurt szerint a bullshit egyik fő forrása, hogy sokan úgy érzik, kötelező megszólalniuk.",
   "ty.day.ex": "Mindenki tudja, hogy a kutatások úgyis tévednek.",
-
   "det.title": "Bullshit-detektor",
   "det.lead": "Illessz be egy szöveget. A detektor a divatos zsargonszavak arányát méri, és figyelembe veszi a konkrét számokat is. Ez játék, nem valódi elemzés.",
   "det.in": "Elemzendő szöveg",
@@ -135,7 +131,6 @@
   "det.hint": "A konkrét számok és dátumok csökkentik a pontszámot, mert ellenőrizhetővé teszik az állítást.",
   "det.words": "szinergi,paradigm,holiszti,proaktív,agilis,skálázh,skálázz,disruptív,ökoszisztém,kulcsfontosságú,értékteremt,optimaliz,innovatív,stratégiai,érintett,digitális átalakul,bevált gyakorlat,win-win,kontextus,robusztus,átfogó,fenntarthatóság,leverage,kiaknáz,dinamikus",
   "det.sample.text": "Holisztikus megközelítéssel proaktívan skálázzuk a szinergikus értékláncot, hogy a kulcsfontosságú érintettek számára robusztus értékteremtést biztosítsunk a digitális átalakulás kontextusában.",
-
   "quiz.title": "Kvíz: üres vagy tartalmas?",
   "quiz.lead": "Nyolc mondat jön. Döntsd el, hogy bullshit-e, vagy valódi információt hordoz.",
   "quiz.count": "{n}. kérdés / {total}",
@@ -168,7 +163,6 @@
   "quiz.q7.w": "Motivációs közhely: kellemesen hangzik, de semmit sem állít.",
   "quiz.q8.t": "A híd hétfő óta le van zárva, kerülj az északi úton.",
   "quiz.q8.w": "Egyszerű, konkrét útmutatás. Ellenőrizhető, és tennivalót ad.",
-
   "work.title": "Céges bullshit",
   "work.lead": "A szervezetekben különösen jól érzi magát a süket duma, mert a látszat sokszor többet számít, mint a tartalom.",
   "work.bingo.h": "Bullshit-bingó",
@@ -186,7 +180,6 @@
   "work.fix.h": "Mit lehet tenni?",
   "work.fix.p": "Kérj konkrétumot. Ha a válasz továbbra is általános, az a probléma maga. A kulcskérdés:",
   "work.q": "Ki, mit, mikorra csinál meg?",
-
   "def.title": "Védekezés a bullshit ellen",
   "def.lead": "Az ellenérvelés költséges, ezért érdemes okosan választani, mikor szállsz be.",
   "def.list.h": "Gyakorlati lista",
@@ -205,7 +198,6 @@
   "def.bl.out": "{n} szavas állítás, nagyságrendileg {m} szó kellene a cáfolatához.",
   "def.sum.h": "Összegzés",
   "def.sum.p": "A süket dumát nem a hazugság elleni eszközökkel lehet kezelni, mert nem az a baja, hogy hamis, hanem hogy <mark>nem érdekli az igazság</mark>. Az ellenszer a türelmes, konkrét kérdezés és a saját pontosságunk megőrzése.",
-
   "acc.title": "Fiók és biztonság",
   "acc.lead": "Itt kezelheted a belépésedet, a kétlépcsős azonosítást és az aktív munkameneteket.",
   "acc.profile": "Profil",
@@ -219,8 +211,7 @@
   "acc.2fa.on": "Bekapcsolva",
   "acc.2fa.p": "Használj hitelesítő alkalmazást (például Google Authenticator, Microsoft Authenticator vagy Aegis). Belépéskor a jelszó mellett a 6 jegyű kódot is meg kell adnod.",
   "acc.2fa.start": "Beállítás indítása",
-  "acc.2fa.secret": "Titkos kulcs (add meg kézzel az alkalmazásban)",
-  "acc.2fa.uri": "Vagy az otpauth hivatkozás",
+  "acc.2fa.secret": "Nem tudod beolvasni? Add meg ezt a titkos kulcsot kézzel az alkalmazásban",
   "acc.2fa.enable": "Bekapcsolás",
   "acc.2fa.disable": "Kikapcsolás",
   "acc.2fa.enabled": "A kétlépcsős azonosítás bekapcsolva.",
@@ -247,7 +238,6 @@
   "acc.prot.4": "Munkamenet: véletlen azonosító, HttpOnly és SameSite=Strict süti, 30 perc inaktivitás után lejár.",
   "acc.prot.5": "Támadások ellen: CSRF-token, szigorú tartalombiztonsági szabályzat (CSP), próbálkozás-korlátozás.",
   "acc.saved": "Elmentve.",
-
   "login.title": "Biztonságos belépés",
   "login.sub": "Jelentkezz be, hogy a haladásod mentődjön.",
   "login.tab.in": "Belépés",
@@ -274,7 +264,6 @@
   "login.sec": "A jelszavad scrypt-tel hashelve tárolódik, soha nem látjuk és nem mentjük el.",
   "login.nojs": "A belépéshez JavaScript szükséges.",
   "login.wait": "Egy pillanat…",
-
   "err.invalid_credentials": "Hibás felhasználónév vagy jelszó.",
   "err.invalid_code": "Hibás vagy már felhasznált kód.",
   "err.ticket_expired": "A belépési lépés lejárt, kezdd újra.",
@@ -301,7 +290,6 @@
   "err.not_found": "Nem található.",
   "err.mismatch": "A két jelszó nem egyezik.",
   "err.server_error": "Váratlan hiba történt. Próbáld újra később.",
-
   "ev.register": "Regisztráció",
   "ev.login": "Sikeres belépés",
   "ev.login_fail": "Sikertelen belépési kísérlet",
@@ -309,5 +297,7 @@
   "ev.password_changed": "Jelszó módosítva",
   "ev.2fa_enabled": "Kétlépcsős azonosítás bekapcsolva",
   "ev.2fa_disabled": "Kétlépcsős azonosítás kikapcsolva",
-  "ev.logout_all": "Kijelentkezés mindenhol"
+  "ev.logout_all": "Kijelentkezés mindenhol",
+  "acc.2fa.scan": "Olvasd be a QR-kódot a hitelesítő alkalmazással (például Google Authenticator vagy Microsoft Authenticator), majd add meg az alkalmazás által mutatott 6 jegyű kódot.",
+  "acc.2fa.qr.alt": "QR-kód a kétlépcsős azonosítás beállításához"
 }

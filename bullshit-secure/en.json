@@ -28,7 +28,6 @@
   "title.defense": "Defense",
   "title.account": "Account and security",
   "title.login": "Sign in",
-
   "home.title": "What is bullshit, and why does it matter?",
   "home.sub": "An interactive guide to empty talk: theory, detection and defense. Your progress stays in your own account.",
   "home.cta1": "Start with the theory",
@@ -60,7 +59,6 @@
   "feat.workplace.d": "Bullshit bingo for your next meeting.",
   "feat.defense.t": "Defense",
   "feat.defense.d": "A checklist and an illustration of Brandolini's law.",
-
   "ff.title": "Frankfurt's theory",
   "ff.lead": "The American philosopher Harry G. Frankfurt wrote an essay in 1986 (published as a book in 2005) that made the topic a subject of serious analysis.",
   "ff.core.h": "The central idea",
@@ -92,7 +90,6 @@
   "ff.role.bs.d": "Hardly cares whether what they say is true. Whether it turns out true by accident is beside the point; the impression is what counts. That is why the other switch no longer matters.",
   "ff.why.h": "Why is it more dangerous?",
   "ff.why.p": "A liar still plays by the rules of truth. A bullshitter walks out of the game, so when it spreads, the yardstick for measuring statements disappears. Frankfurt argues that bullshit is a greater enemy of the truth than lies are.",
-
   "ty.title": "Types of bullshit",
   "ty.lead": "Empty talk comes in many forms. The scale shows how hard each one is to recognize.",
   "ty.filter": "Filter by difficulty",
@@ -114,7 +111,6 @@
   "ty.day.t": "Everyday, filler bullshit",
   "ty.day.d": "When someone offers an opinion on a subject they know little about because they feel they have to say something. Frankfurt argues that one main source of bullshit is the feeling that one is obliged to speak.",
   "ty.day.ex": "Everybody knows that studies are wrong anyway.",
-
   "det.title": "Bullshit detector",
   "det.lead": "Paste a text. The detector measures the share of fashionable jargon and also takes concrete numbers into account. It is a game, not a real analysis.",
   "det.in": "Text to analyze",
@@ -135,7 +131,6 @@
   "det.hint": "Concrete numbers and dates lower the score because they make a statement checkable.",
   "det.words": "synerg,paradigm,holistic,proactiv,agile,scalab,disrupt,ecosystem,stakeholder,leverag,optimiz,innovat,strategic,robust,best practice,transformation,empower,value chain,going forward,circle back,deep dive,low-hanging,move the needle,bandwidth,touchpoint,actionable,end-to-end,mission-critical,value-add,win-win",
   "det.sample.text": "Going forward, we proactively leverage a holistic ecosystem of scalable synergies to empower key stakeholders and drive robust value creation across the digital transformation.",
-
   "quiz.title": "Quiz: empty or meaningful?",
   "quiz.lead": "Eight sentences are coming. Decide whether each one is bullshit or carries real information.",
   "quiz.count": "Question {n} of {total}",
@@ -168,7 +163,6 @@
   "quiz.q7.w": "A motivational platitude: pleasant to hear, but it claims nothing.",
   "quiz.q8.t": "The bridge has been closed since Monday, so take the northern road.",
   "quiz.q8.w": "Simple, concrete guidance. It can be checked and tells you what to do.",
-
   "work.title": "Corporate bullshit",
   "work.lead": "Organizations are a particularly comfortable home for empty talk, because appearances often count for more than substance.",
   "work.bingo.h": "Bullshit bingo",
@@ -186,7 +180,6 @@
   "work.fix.h": "What can you do?",
   "work.fix.p": "Ask for specifics. If the answer stays general, that is the problem itself. The key question:",
   "work.q": "Who does what by when?",
-
   "def.title": "Defending against bullshit",
   "def.lead": "Counter-arguing is costly, so it pays to choose carefully when to step in.",
   "def.list.h": "Practical checklist",
@@ -205,7 +198,6 @@
   "def.bl.out": "A {n}-word claim would need roughly {m} words to refute.",
   "def.sum.h": "Summary",
   "def.sum.p": "Empty talk cannot be handled with the tools used against lies, because its problem is not that it is false but that it <mark>does not care about the truth</mark>. The antidote is patient, concrete questioning and keeping our own statements precise.",
-
   "acc.title": "Account and security",
   "acc.lead": "Manage your sign-in, two-step verification and active sessions here.",
   "acc.profile": "Profile",
@@ -219,8 +211,7 @@
   "acc.2fa.on": "On",
   "acc.2fa.p": "Use an authenticator app (for example Google Authenticator, Microsoft Authenticator or Aegis). When you sign in you will enter a 6-digit code in addition to your password.",
   "acc.2fa.start": "Start setup",
-  "acc.2fa.secret": "Secret key (enter it manually in your app)",
-  "acc.2fa.uri": "Or the otpauth link",
+  "acc.2fa.secret": "Can't scan it? Enter this secret key in the app manually",
   "acc.2fa.enable": "Turn on",
   "acc.2fa.disable": "Turn off",
   "acc.2fa.enabled": "Two-step verification is on.",
@@ -247,7 +238,6 @@
   "acc.prot.4": "Session: random ID in an HttpOnly, SameSite=Strict cookie, expires after 30 minutes of inactivity.",
   "acc.prot.5": "Against attacks: CSRF tokens, a strict Content Security Policy (CSP) and attempt limiting.",
   "acc.saved": "Saved.",
-
   "login.title": "Secure sign-in",
   "login.sub": "Sign in so your progress is saved.",
   "login.tab.in": "Sign in",
@@ -274,7 +264,6 @@
   "login.sec": "Your password is stored as an scrypt hash; we never see or save it in plain text.",
   "login.nojs": "JavaScript is required to sign in.",
   "login.wait": "One moment…",
-
   "err.invalid_credentials": "Incorrect username or password.",
   "err.invalid_code": "Incorrect or already used code.",
   "err.ticket_expired": "The sign-in step expired, please start again.",
@@ -301,7 +290,6 @@
   "err.not_found": "Not found.",
   "err.mismatch": "The two passwords do not match.",
   "err.server_error": "Something went wrong. Please try again later.",
-
   "ev.register": "Account created",
   "ev.login": "Successful sign-in",
   "ev.login_fail": "Failed sign-in attempt",
@@ -309,5 +297,7 @@
   "ev.password_changed": "Password changed",
   "ev.2fa_enabled": "Two-step verification turned on",
   "ev.2fa_disabled": "Two-step verification turned off",
-  "ev.logout_all": "Signed out everywhere"
+  "ev.logout_all": "Signed out everywhere",
+  "acc.2fa.scan": "Scan the QR code with your authenticator app (for example Google Authenticator or Microsoft Authenticator), then enter the 6-digit code the app shows.",
+  "acc.2fa.qr.alt": "QR code for setting up two-step verification"
 }

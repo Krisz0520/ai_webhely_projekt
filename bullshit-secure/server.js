@@ -61,6 +61,7 @@ const ASSETS = {
   '/style.css': ['style.css', 'text/css; charset=utf-8'],
   '/app.js': ['app.js', 'text/javascript; charset=utf-8'],
   '/login.js': ['login.js', 'text/javascript; charset=utf-8'],
+  '/qr.js': ['qr.js', 'text/javascript; charset=utf-8'],
   '/theme.js': ['theme.js', 'text/javascript; charset=utf-8'],
   '/favicon.svg': ['favicon.svg', 'image/svg+xml'],
 };

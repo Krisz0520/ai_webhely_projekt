@@ -315,6 +315,8 @@ a.feat .open { color: var(--accent); font-size: 15px; margin-top: 6px; }
 .log li { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; }
 .log li:first-child { border-top: 0; }
 .log .when { color: var(--fg2); font-variant-numeric: tabular-nums; }
+.qr-wrap { width: fit-content; padding: 10px; background: #fff; border-radius: 18px; scroll-margin-top: 96px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.qr-wrap svg { display: block; width: min(250px, 72vw); height: auto; aspect-ratio: 1; }
 code.secret { display: block; padding: 14px 16px; border-radius: 12px; background: var(--bg); font: 500 16px var(--mono); letter-spacing: .08em; overflow-wrap: anywhere; user-select: all; }
 code.uri { font-size: 12px; letter-spacing: 0; }
 .shield { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; }

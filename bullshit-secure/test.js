@@ -86,6 +86,8 @@ async function mainSuite() {
     ok(/<html lang="hu">/.test(r.text), 'lang cookie overrides Accept-Language');
     r = await R({ p: '/style.css' });
     ok(r.status === 200 && /text\/css/.test(r.headers['content-type']), 'static allowlist serves style.css');
+    r = await R({ p: '/qr.js' });
+    ok(r.status === 200 && /javascript/.test(r.headers['content-type']) && /window|root\.QR/.test(r.text), 'static allowlist serves qr.js');
     for (const bad of ['/server.js', '/store.js', '/hu.json', '/home.html', '/layout.html', '/package.json', '/data/users.enc', '/..%2fserver.js', '/%2e%2e/server.js', '/test.js']) {
       r = await R({ p: bad });
       ok(r.status === 404 || r.status === 400, 'not served: ' + bad, 'status ' + r.status);
@@ -122,6 +124,8 @@ async function mainSuite() {
       const rr = await R({ p: pg, jar: A });
       ok(rr.status === 200 && !/\{\{/.test(rr.text), 'page renders: ' + pg);
     }
+    r = await R({ p: '/account', jar: A });
+    ok(/src="\/qr\.js"/.test(r.text) && /id="tf-qr"/.test(r.text), 'account page loads qr.js and has the QR container');
     r = await R({ p: '/login', jar: A });
     ok(r.status === 302 && r.headers.location === '/', 'signed-in user is redirected away from /login');
     r = await R({ p: '/api/me', jar: A });
@@ -264,6 +268,56 @@ async function bindSuite() {
   ok(r.status === 1 && /non-loopback/.test(String(r.stderr)), 'refuses to listen on a public address without HTTPS');
 }
 
+function qrTests() {
+  console.log('\n[QR code]');
+  const QR = require('./qr.js');
+  const hex = (a) => a.map((x) => x.toString(16).padStart(2, '0')).join(' ');
+  // ISO/IEC 18004 Annex I example ("01234567", version 1-M): the 10 error-correction codewords
+  const iso = [0x10, 0x20, 0x0c, 0x56, 0x61, 0x80, 0xec, 0x11, 0xec, 0x11, 0xec, 0x11, 0xec, 0x11, 0xec, 0x11];
+  ok(hex(QR._rsRemainder(iso, QR._rsDivisor(10))) === 'a5 24 d4 c1 ed 36 c7 87 2c 55', 'Reed-Solomon matches the ISO/IEC 18004 example');
+  ok(QR.encode('A').size === 21 && QR.encode('x'.repeat(15)).size === 25 && QR.encode('x'.repeat(213)).version === 10, 'version grows with the text length');
+  let threw = false;
+  try { QR.encode('x'.repeat(214)); } catch (e) { threw = true; }
+  ok(threw, 'text longer than 213 bytes is rejected');
+
+  const q = QR.encode('otpauth://totp/Test:abc?secret=ABCDEFGHIJKLMNOP');
+  const finder = (x0, y0) => [0, 1, 2, 3, 4, 5, 6].every((i) => q.modules[y0][x0 + i] && q.modules[y0 + 6][x0 + i] && q.modules[y0 + i][x0] && q.modules[y0 + i][x0 + 6]) &&
+    !q.modules[y0 + 1][x0 + 1] && q.modules[y0 + 3][x0 + 3];
+  ok(finder(0, 0) && finder(q.size - 7, 0) && finder(0, q.size - 7), 'three finder patterns are in place');
+  ok(q.modules[q.size - 8][8] === true, 'the fixed dark module is set');
+  ok(/^M\d+,\d+h\d+v1h-\d+z/.test(QR.pathData(q, 4)), 'pathData returns an SVG path');
+
+  const longest = 'otpauth://totp/Bullshit%20Analysis:' + 'a'.repeat(32) + '?secret=' + 'A'.repeat(32) + '&issuer=Bullshit%20Analysis&algorithm=SHA1&digits=6&period=30';
+  ok(Buffer.byteLength(longest) <= QR.MAX_BYTES, 'the longest possible 2FA URI fits (' + Buffer.byteLength(longest) + ' bytes)');
+
+  // Real scanner check (OpenCV decodes our codes). Skipped when python3 + opencv are not installed.
+  if (spawnSync('python3', ['-I', '-c', 'import cv2, numpy']).status !== 0) { console.log('  skip real-scanner check (python3 with opencv-python not available)'); return; }
+  let seed = 7;
+  const rnd = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:/?&=%._-';
+  const rs = (n) => Array.from({ length: n }, () => alphabet[Math.floor(rnd() * alphabet.length)]).join('');
+  const texts = [1, 14, 15, 42, 43, 84, 85, 122, 123, 152, 153, 213].map(rs).concat([longest, 'Árvíztűrő tükörfúrógép']);
+  const cases = texts.map((t) => { const e = QR.encode(t); return { text: t, size: e.size, modules: e.modules.map((r) => r.map(Number)) }; });
+  const py = [
+    'import sys, json, numpy as np, cv2',
+    'cases = json.load(sys.stdin)',
+    'det = cv2.QRCodeDetector()',
+    'res = []',
+    'for c in cases:',
+    '    n = c["size"]; m = np.array(c["modules"], dtype=np.uint8); s = 8; b = 4',
+    '    img = np.full(((n + 2*b)*s, (n + 2*b)*s), 255, np.uint8)',
+    '    img[b*s:(b+n)*s, b*s:(b+n)*s] = np.kron(1 - m, np.ones((s, s), np.uint8)) * 255',
+    '    lo, hi = b*s, (b+n)*s',
+    '    pts = np.array([[lo, lo], [hi, lo], [hi, hi], [lo, hi]], dtype=np.float32).reshape(1, 4, 2)',
+    '    res.append(det.decode(img, pts)[0] == c["text"])',
+    'print(json.dumps(res))',
+  ].join('\n');
+  const run = spawnSync('python3', ['-I', '-c', py], { input: JSON.stringify(cases), encoding: 'utf8' });
+  let res = [];
+  try { res = JSON.parse(run.stdout); } catch (e) { /* reported below */ }
+  ok(res.length === cases.length && res.every(Boolean), 'OpenCV scanner reads all ' + cases.length + ' codes (versions 1-10, UTF-8 included)', run.stderr.slice(0, 200));
+}
+
 function staticChecks() {
   console.log('\n[TOTP]');
   // RFC 6238 appendix B test vector (SHA-1): T=59s -> counter 1 -> 8-digit 94287082, i.e. 6-digit 287082
@@ -323,6 +377,7 @@ function staticChecks() {
 (async () => {
   try {
     staticChecks();
+    qrTests();
     await mainSuite();
     await tlsSuite();
     await bindSuite();
